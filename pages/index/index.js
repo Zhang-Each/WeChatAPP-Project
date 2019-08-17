@@ -50,9 +50,16 @@ Page({
       hasUserInfo: true
     })
   },
-  jumpto() {
-    wx.navigateTo({
-      url: '/pages/countbook/countbook',
+  readme() {
+    var self = this;
+    wx.showModal({
+      title: '用户须知',
+      content: '可以在新建账单中记录下您的收支，在数据统计中查看您的收支记录，具体使用方法请阅读我们的开发文档！',
+      showCancel: false,
+      confirmColor: '#007aff',
+      success: function () {
+        self.setData({ msg: '你刚关闭了警告框' });
+      }
     })
   }
 })

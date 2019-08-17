@@ -7,7 +7,7 @@
       <text class="userinfo-nickname">{{userInfo.nickName}}</text>
     </block>
   </view>
-  <view class='buttonposition' bindtap='jumpto'>
-    <button class="buttonword" hover-class="hover">进入账本</button>
+  <view class='buttonposition' bindtap='readme'>
+    <button class="buttonword" hover-class="hover">使用说明</button>
   </view>
 </view>
