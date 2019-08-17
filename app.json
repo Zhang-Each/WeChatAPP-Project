@@ -1,0 +1,50 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/countbook/countbook",
+    "pages/mydata/mydata",
+    "pages/feedback/feedback",
+    "pages/table/table",
+    "pages/reminder/reminder"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#000",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "color": "#000000",
+    "selectedColor": "#666",
+    "backgroundColor": "#e4e4e4",
+    "position": "bottom",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "主页",
+        "iconPath": "pages/img/homepage.png",
+        "selectedIconPath": "pages/img/homepage_fill.png"
+      },
+      {
+        "pagePath": "pages/countbook/countbook",
+        "text": "新建账单",
+        "iconPath": "pages/img/activity.png",
+        "selectedIconPath": "pages/img/activity_fill.png"
+      },
+      {
+        "pagePath": "pages/table/table",
+        "text": "数据统计",
+        "iconPath": "pages/img/dynamic.png",
+        "selectedIconPath": "pages/img/dynamic_fill.png"
+      },
+      {
+        "pagePath": "pages/mydata/mydata",
+        "text": "我的",
+        "iconPath": "pages/img/addressbook.png",
+        "selectedIconPath": "pages/img/addressbook_fill.png"
+      }
+    ]
+  },
+  "usingComponents": {},
+  "sitemapLocation": "sitemap.json"
+}

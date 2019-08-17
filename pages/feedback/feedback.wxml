@@ -1,0 +1,12 @@
+<view>
+  <textarea class="feedback" placeholder-class="place-holder" placeholder="内容" name="introduction" maxlength='300' bindinput='limit' value="{{text}}" style="font-size: 14px;">
+    <view class="reminder">
+      <text style="color: #000; font-size: 14px; float: right; margin-right: 2%;">
+{{current}} / {{max}} （最多可写300字）
+</text>
+    </view>
+  </textarea>
+</view>
+<button formType="submit" class="submitbutton" hover-class="buttonclass" bindtap="sub">
+  提交
+</button>

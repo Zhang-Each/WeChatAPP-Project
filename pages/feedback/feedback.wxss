@@ -1,0 +1,31 @@
+page {
+  background-color: darkgray;
+}
+
+.feedback {
+  height: 250px;
+  width: 90%;
+  background-color: white;
+  padding-top: 30rpx;
+  font-size: 30rpx;
+  text-indent: 28rpx;
+  border: 1rpx solid gainsboro;
+  margin: 0 auto;
+  overflow: hidden;
+  position: relative;
+}
+
+.submitbutton {
+  background-color: beige;
+  width: 20%;
+  font-size: 15px;
+  border-radius: 98rpx;
+}
+
+.reminder {
+  padding-top: 420rpx;
+}
+
+.buttonclass {
+  background-color: darkgray;
+}

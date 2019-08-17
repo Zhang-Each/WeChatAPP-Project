@@ -1,0 +1,56 @@
+<!--countbook.wxml-->
+<view class='tipword'>
+  <text>记录下你的收支情况吧！</text>
+</view>
+
+<form bindsubmit="formSubmit" bindreset="formReset">
+
+  <view class='choose'>
+    <text>收入/支出</text>
+
+    <radio-group name='choice'>
+      <radio wx:for="{{choose}}" value='{{item.name}}'>
+        <image src="{{item.image}}" class='photo'></image>
+        {{item.name}}
+      </radio>
+    </radio-group>
+  </view>
+
+  <view class='choose'>
+    <text>类型</text>
+    <radio-group class='radio-group' name='event'>
+
+      <radio wx:for="{{kind}}" value='{{item.name}}'>
+        <image src="{{item.image}}" class='photo'></image>
+        {{item.name}}
+      </radio>
+
+    </radio-group>
+  </view>
+
+  <view class='money'>
+    <text>金额(单位：元)</text>
+    <input name='inputmoney' type='digit' placeholder-style='font-size:28rpx;' placeholder='输入金额'>
+    </input>
+  </view>
+
+  <view class='money'>
+    <text>记录时间</text>
+    <text name='today' placeholder-style='font-size:28rpx;'>{{date}}
+</text>
+  </view>
+
+  <button formType="submit">记录</button>
+</form>
+
+<view class='tiptype'>
+  <text>{{tips}}</text>
+</view>
+
+
+<modal class="modal" title='确认账目' hidden="{{modalHidden}}" bindcancel='modalCancel' bindconfirm='modalConfirm'>
+  <view>支出/收入:{{userchoose}}</view>
+  <view>类型:{{kindofmoney}}</view>
+  <view>金额:{{numberofmoney}}元</view>
+  <view>日期:{{date}}</view>
+</modal>

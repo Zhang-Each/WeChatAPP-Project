@@ -1,0 +1,33 @@
+/**index.wxss**/
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  color: #aaa;
+}
+
+.buttonposition{
+  margin-top: 200px;
+}
+
+.buttonword {
+  
+  width: 100%;
+  background-color: rgb(88, 88, 90);
+  color: white;
+  background: bg_red;
+}
+
+.hover {
+  background:  rgb(236, 179, 156);
+}

@@ -1,0 +1,44 @@
+page {
+  background: #eee;
+}
+
+.save{
+  border-radius: 5px;
+  font-size: 30rpx;
+  line-height: 100rpx;
+  display: block;
+  background: #6fa6cf;
+  width: 300rpx;
+  color: #fff;
+}
+
+.buttonkind{
+  background: rgb(236, 179, 156);
+}
+
+.title {
+  padding: 20rpx 10rpx;
+  align-content: center;
+  font-family: '仿宋';
+  font-weight: bold;
+}
+
+.inform1 {
+  background: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  align-items: center;
+  padding: 20rpx;
+  border-bottom: 1rpx solid #eee;
+  border-style:dotted;
+}
+
+.inform2 {
+  background: #fff;
+  display: flex;
+  justify-content: space-between;
+  padding: 20rpx;
+  border-bottom: 1rpx solid #eee;
+  text-align: right;
+}

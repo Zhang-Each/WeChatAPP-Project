@@ -1,0 +1,56 @@
+page {
+  background: #eee;
+}
+
+.tipword {
+  padding: 20rpx 10rpx;
+  align-content: center;
+}
+
+.tipword text {
+  font-size: 28rpx;
+  color: #6f6f6f;
+}
+
+.money {
+  background: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  align-items: center;
+  padding: 20rpx;
+  border-bottom: 1rpx solid #eee;
+}
+
+.money input {
+  text-align: right;
+}
+
+.choose {
+  background: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  align-items: center;
+  padding: 20rpx;
+  border-bottom: 1rpx solid #eee;
+}
+
+button {
+  background-color: rgb(6, 2, 254);
+  color: #fff;
+  width: 48%;
+  align-content: center;
+}
+
+.photo {
+  width: 24px;
+  height: 25px;
+}
+
+.tiptype {
+  background-color: rgb(248, 248, 250);
+  font-style: 楷体;
+  position: absolute;
+  top: 340px;
+}

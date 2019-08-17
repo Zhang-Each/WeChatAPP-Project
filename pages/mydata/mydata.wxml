@@ -1,0 +1,12 @@
+<view class="userinfo">
+  <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+  <block wx:else>
+    <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+  </block>
+</view>
+<view class="userinfo-welcome"><text>{{userInfo.nickName}}，欢迎回来！</text></view>
+<view class="divLine"></view>
+<button bindtap="reminder" hover-class='btn_hover'>备忘录</button>
+<view class="divLine"></view>
+<button bindtap="feedback" hover-class='btn_hover'>意见反馈</button>
+<view class="divLine"></view>
