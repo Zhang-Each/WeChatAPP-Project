@@ -1,3 +1,9 @@
+<view class='chart'>
+  <view class='chart-info'>
+    <canvas canvas-id="lineCanvas" disable-scroll="true" class="canvas" bindtouchstart="touchHandler"></canvas>
+  </view>
+</view>
+
 <text class='title'>收支记录</text>
 <view wx:for="{{user_task}}">
   <text class='inform1'>{{date}} {{hourminute}} </text>

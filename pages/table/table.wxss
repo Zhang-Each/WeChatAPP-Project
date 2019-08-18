@@ -42,3 +42,20 @@ page {
   border-bottom: 1rpx solid #eee;
   text-align: right;
 }
+
+.chart{
+  width: 95%;
+  height: 550rpx;
+  margin: 0 auto;
+  padding-top: 50rpx;
+  background: #fff;
+}
+
+.chart-info{
+  height: 500rpx;
+}
+
+.canvas {
+    width: 380px;
+    height: 400px;
+}

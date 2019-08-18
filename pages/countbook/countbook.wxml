@@ -8,8 +8,8 @@
   <view class='choose'>
     <text>收入/支出</text>
 
-    <radio-group name='choice'>
-      <radio wx:for="{{choose}}" value='{{item.name}}'>
+<radio-group class="radio-group" name='choice'>
+ <radio wx:for="{{choose}}" value='{{item.name}}'>
         <image src="{{item.image}}" class='photo'></image>
         {{item.name}}
       </radio>
