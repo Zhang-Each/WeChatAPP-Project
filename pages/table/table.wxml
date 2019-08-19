@@ -6,7 +6,7 @@
 
 <text class='title'>收支记录</text>
 <view wx:for="{{user_task}}">
-  <text class='inform1'>{{date}} {{hourminute}} </text>
+  <text class='inform1'>{{item.date}} {{item.hourminute}} </text>
 
   <text class='inform2'>{{item.event}} {{item.kind}} 了 {{item.value}} 元 </text>
 </view>

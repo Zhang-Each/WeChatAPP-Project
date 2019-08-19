@@ -7,15 +7,20 @@ var lineChart = null;
 Page({
   data: {
     user_task: [],
-    newcount: {
-      kind: 0,
-      type: 0,
-      number: 0,
-      date: '',
-      hourminute: ''
-    }
   },
   onShow: function() {
+    var that = this;
+    //获取之前保留在缓存里的数据
+    wx.getStorage({
+      key: 'table',
+      success: function (res) {
+        if (res.data) {
+          that.setData({
+            user_task: res.data
+          })
+        }
+      }
+    })
     this.setData({
       user_task: app.globalData.tasks
     })
@@ -29,29 +34,37 @@ Page({
       console.error('getSystemInfoSync failed!');   //如果获取失败
     }
     var cat = ['饮食', '交通', '购物', '娱乐', '其他消费', '工资', '理财'];
-    var dat = [0, 0, 0, 0, 0, 0, 0];
+    var yincome = [0, 0, 0, 0, 0, 0, 0];
+    var yexpend = [0, 0, 0, 0, 0, 0, 0];
     var k = 0;
     while (this.data.user_task[k] != null) {
       if (this.data.user_task[k].event == '饮食') {
-        dat[0] = Number(dat[0]) + Number(this.data.user_task[k].value);
+        if (this.data.user_task[k].kind == '收入') yincome[0] = Number(yincome[0]) + Number(this.data.user_task[k].value);
+        else yexpend[0] = Number(yexpend[0]) + Number(this.data.user_task[k].value);
       }
       else if (this.data.user_task[k].event == '交通') {
-        dat[1] = Number(dat[1]) + Number(this.data.user_task[k].value);
+        if (this.data.user_task[k].kind == '收入') yincome[1] = Number(yincome[1]) + Number(this.data.user_task[k].value);
+        else yexpend[1] = Number(yexpend[1]) + Number(this.data.user_task[k].value);
       }
       else if (this.data.user_task[k].event == '购物') {
-        dat[2] = Number(dat[2]) + Number(this.data.user_task[k].value);
+        if (this.data.user_task[k].kind == '收入') yincome[2] = Number(yincome[2]) + Number(this.data.user_task[k].value);
+        else yexpend[2] = Number(yexpend[2]) + Number(this.data.user_task[k].value);
       }
       else if (this.data.user_task[k].event == '娱乐') {
-        dat[3] = Number(dat[3]) + Number(this.data.user_task[k].value);
+        if (this.data.user_task[k].kind == '收入') yincome[3] = Number(yincome[3]) + Number(this.data.user_task[k].value);
+        else yexpend[3] = Number(yexpend[3]) + Number(this.data.user_task[k].value);
       }
       else if (this.data.user_task[k].event == '其他') {
-        dat[4] = Number(dat[4]) + Number(this.data.user_task[k].value);
+        if (this.data.user_task[k].kind == '收入') yincome[4] = Number(yincome[4]) + Number(this.data.user_task[k].value);
+        else yexpend[4] = Number(yexpend[4]) + Number(this.data.user_task[k].value);
       }
       else if (this.data.user_task[k].event == '工资') {
-        dat[5] = Number(dat[5]) + Number(this.data.user_task[k].value);
+        if (this.data.user_task[k].kind == '收入') yincome[5] = Number(yincome[5]) + Number(this.data.user_task[k].value);
+        else yexpend[5] = Number(yexpend[5]) + Number(this.data.user_task[k].value);
       }
       else if (this.data.user_task[k].event == '理财') {
-        dat[6] = Number(dat[6]) + Number(this.data.user_task[k].value);
+        if (this.data.user_task[k].kind == '收入') yincome[6] = Number(yincome[6]) + Number(this.data.user_task[k].value);
+        else yexpend[6] = Number(yexpend[6]) + Number(this.data.user_task[k].value);
       }
       k++;
     }
@@ -62,12 +75,18 @@ Page({
       animation: true,  //是否开启动画
       categories: cat,
       series: [{
-        name: '金额',
-        data: dat,
+        name: '收入',
+        data: yincome,
         format: function (val) {
           return val.toFixed(2) + '元';
         },
-      },
+      },{
+          name: '支出',
+          data: yexpend,
+          format: function (val) {
+            return val.toFixed(2) + '元';
+          },
+      }
       ],
       xAxis: {   //是否隐藏x轴分割线
         disableGrid: true,
@@ -83,7 +102,7 @@ Page({
       dataLabel: true,    //是否在图表上直接显示数据
       dataPointShape: true, //是否在图标上显示数据点标志
       extra: {
-        lineStyle: 'curve'  //曲线
+        lineStyle: 'straight'  //曲线
       },
     });
   },
@@ -121,35 +140,43 @@ Page({
     var windowWidth = '', windowHeight = '';    //定义宽高
     try {
       var res = wx.getSystemInfoSync();    //试图获取屏幕宽高数据
-      windowWidth = res.windowWidth / 750 * 700   //以设计图750为主进行比例算换
-      windowHeight = res.windowWidth / 750 * 500    //以设计图750为主进行比例算换
+      windowWidth = res.windowWidth / 750 * 700 //以设计图750为主进行比例算换
+      windowHeight = res.windowWidth / 750 * 500 //以设计图750为主进行比例算换
     } catch (e) {
       console.error('getSystemInfoSync failed!');   //如果获取失败
     }
     var cat = ['饮食', '交通', '购物', '娱乐', '其他消费', '工资', '理财'];
-    var dat = [0, 0, 0, 0, 0, 0, 0];
-    var k=0;
-    while (this.data.user_task[k] != null){
-      if (this.data.user_task[k].event=='饮食'){
-        dat[0] = dat[0] + this.data.user_task[k].value;
+    var yincome = [0, 0, 0, 0, 0, 0, 0];
+    var yexpend = [0, 0, 0, 0, 0, 0, 0];
+    var k = 0;
+    while (this.data.user_task[k] != null) {
+      if (this.data.user_task[k].event == '饮食') {
+        if (this.data.user_task[k].kind == '收入') yincome[0] = Number(yincome[0]) + Number(this.data.user_task[k].value);
+        else yexpend[0] = Number(yexpend[0]) + Number(this.data.user_task[k].value);
       }
-      else if (this.data.user_task[k].event == '交通'){
-        dat[1] = dat[1] + this.data.user_task[k].value;
+      else if (this.data.user_task[k].event == '交通') {
+        if (this.data.user_task[k].kind == '收入') yincome[1] = Number(yincome[1]) + Number(this.data.user_task[k].value);
+        else yexpend[1] = Number(yexpend[1]) + Number(this.data.user_task[k].value);
       }
       else if (this.data.user_task[k].event == '购物') {
-        dat[2] = dat[2] + this.data.user_task[k].value;
+        if (this.data.user_task[k].kind == '收入') yincome[2] = Number(yincome[2]) + Number(this.data.user_task[k].value);
+        else yexpend[2] = Number(yexpend[2]) + Number(this.data.user_task[k].value);
       }
       else if (this.data.user_task[k].event == '娱乐') {
-        dat[3] = dat[3] + this.data.user_task[k].value;
+        if (this.data.user_task[k].kind == '收入') yincome[3] = Number(yincome[3]) + Number(this.data.user_task[k].value);
+        else yexpend[3] = Number(yexpend[3]) + Number(this.data.user_task[k].value);
       }
       else if (this.data.user_task[k].event == '其他') {
-        dat[4] = dat[4] + this.data.user_task[k].value;
+        if (this.data.user_task[k].kind == '收入') yincome[4] = Number(yincome[4]) + Number(this.data.user_task[k].value);
+        else yexpend[4] = Number(yexpend[4]) + Number(this.data.user_task[k].value);
       }
       else if (this.data.user_task[k].event == '工资') {
-        dat[5] = dat[5] + this.data.user_task[k].value;
+        if (this.data.user_task[k].kind == '收入') yincome[5] = Number(yincome[5]) + Number(this.data.user_task[k].value);
+        else yexpend[5] = Number(yexpend[5]) + Number(this.data.user_task[k].value);
       }
       else if (this.data.user_task[k].event == '理财') {
-        dat[6] = dat[6] + this.data.user_task[k].value;
+        if (this.data.user_task[k].kind == '收入') yincome[6] = Number(yincome[6]) + Number(this.data.user_task[k].value);
+        else yexpend[6] = Number(yexpend[6]) + Number(this.data.user_task[k].value);
       }
       k++;
     }
@@ -160,12 +187,18 @@ Page({
       animation: true,  //是否开启动画
       categories: cat,
       series: [{
-        name: '金额',
-        data: dat,
+        name: '收入',
+        data: yincome,
         format: function (val) {
           return val.toFixed(2) + '元';
         },
-      }, 
+      }, {
+        name: '支出',
+        data: yexpend,
+        format: function (val) {
+          return val.toFixed(2) + '元';
+        },
+      }
       ],
       xAxis: {   //是否隐藏x轴分割线
         disableGrid: true,

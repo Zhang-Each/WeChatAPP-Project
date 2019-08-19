@@ -44,7 +44,7 @@
       </view>
     </view>
   </view>
-  <view class="input-wrap mt" wx:if="{{lists.length>0}}">
+  <view class="input-wrap mt">
     <button class="btn btn-save" bindtap="saveData">保存数据</button>
   </view>
 </view>

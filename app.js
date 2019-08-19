@@ -35,7 +35,6 @@ App({
   },
   globalData: {
     userInfo: null,
-
     tasks: [] //这是用来存储表单提交信息的全局变量
   }
 })

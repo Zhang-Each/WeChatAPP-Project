@@ -93,6 +93,8 @@ Page({
     obj.kind = e.detail.value.choice;
     obj.event = e.detail.value.event;
     obj.value = e.detail.value.inputmoney;
+    obj.date = util.formatDate(new Date());
+    obj.hourminute = util.formatTime2();
 
     app.globalData.tasks = app.globalData.tasks.concat(obj); //全局数组的改变
     app.globalData.donumber = app.globalData.donumber + 1;
