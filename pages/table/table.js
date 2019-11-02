@@ -16,13 +16,18 @@ Page({
       success: function (res) {
         if (res.data) {
           that.setData({
-            user_task: res.data
+            user_task: res.data.concat(app.globalData.tasks)
           })
         }
+        else that.setData({
+          user_task: app.globalData.tasks
+        })
+      },
+      fail: function (res) {
+        that.setData({
+          user_task: app.globalData.tasks
+        })
       }
-    })
-    this.setData({
-      user_task: app.globalData.tasks
     })
     
     var windowWidth = '', windowHeight = '';    //定义宽高
@@ -118,14 +123,23 @@ Page({
     //获取之前保留在缓存里的数据
     wx.getStorage({
       key: 'table',
-      success: function(res) {
+      success: function (res) {
         if (res.data) {
           that.setData({
-            user_task: res.data
+            user_task: res.data.concat(app.globalData.tasks)
           })
         }
+        else that.setData({
+          user_task: app.globalData.tasks
+        })
+      },
+      fail: function (res) {
+        that.setData({
+          user_task: app.globalData.tasks
+        })
       }
     })
+
     //获取用户信息
     wx.getUserInfo({
       success: function(res) {
